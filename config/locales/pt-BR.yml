@@ -37,3 +37,8 @@ pt-BR:
       - :day
       - :month
       - :year
+    time:
+    formats:
+      default: "%d/%m/%Y %H:%M:%S"
+      short: "%d %b %H:%M"
+      long: "%d de %B de %Y %H:%M"

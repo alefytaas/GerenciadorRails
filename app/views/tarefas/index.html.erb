@@ -23,11 +23,6 @@
       </ul>
     </div>
     
-    <ul class="weekdays">
-      <% Date::ABBR_DAYNAMES.rotate(start_day).each do |day_name| %> <!-- Rotate to start from the correct day -->
-        <li><%= day_name %></li>
-      <% end %>
-    </ul>
     
     <div class="days-grid">
       <% (1..data.next_month.prev_day.day).each do |day| %>
@@ -38,13 +33,13 @@
               <div class="empty-day"></div>
             <% end %>
             <div class="day">
-              <%= link_to day, "#", class: "day-link" %>
+              <%= link_to day.to_s + " " + Date::ABBR_DAYNAMES[current_date.wday] , "#gfgf", class: "day-link" %>
             </div>
           </div>
           <% start_day = 0 %> <!-- Reset start_day after the first week -->
         <% else %>
           <div class="day">
-            <%= link_to day, "#", class: "day-link" %>
+            <%= link_to day.to_s + " " + Date::ABBR_DAYNAMES[current_date.wday] , "#gfgf", class: "day-link" %>
           </div>
         <% end %>
       <% end %>
@@ -66,7 +61,7 @@
   <% end %>
   
   <div class="tarefas-quadro">
-    <h1>Tarefas Incompletas</h1>
+    <h1>Tarefas Pendentes</h1>
     <div class="tarefas">
       <% @tarefas.each do |tarefa| %>
         <%= render tarefa %>
