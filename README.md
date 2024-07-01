@@ -34,8 +34,9 @@ O Gerenciador de Tarefas é uma aplicação web desenvolvida em Ruby on Rails qu
 
 ## Tecnologias Utilizadas
 
-- **Ruby on Rails:** Framework web utilizado para o desenvolvimento backend e frontend.
+- **Ruby on Rails:** Framework web utilizado para o desenvolvimento Back-End e Front-End.
 - **HTML/CSS:** Para a estrutura e o estilo da interface do usuário.
+- **Bootstrap:** Framework de componentes Front-End
 - **SQLite (ou outro banco de dados):** Armazenamento de dados da aplicação.
 
 ## Contribuindo
