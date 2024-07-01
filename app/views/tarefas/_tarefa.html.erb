@@ -1,0 +1,29 @@
+  <p>
+    <strong>Titulo:</strong>
+    <%= tarefa.titulo %>
+  </p>
+
+  <p>
+    <strong>Descricao:</strong>
+    <%= tarefa.descricao %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= completo(tarefa) %>
+  </p>
+<% if tarefa.completo%>
+
+<% else %>
+<p>
+    <strong>Prazo:</strong>
+    
+    
+    <strong> <%= calc_prazo(tarefa) %></strong>
+    
+
+  </p>
+<% end %>
+   
+
+

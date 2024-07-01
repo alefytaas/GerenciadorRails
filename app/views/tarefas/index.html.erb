@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+    
+</head>
+<body>
+  <% data = Date.new(Date.today.year, Date.today.month, 1) %>
+  <% start_day = data.wday == 0 ? 6 : data.wday - 1 %> <!-- Adjust start day index -->
+  <div class="calendar">
+    <div class="month">
+      <ul>
+        <li class="prev">&#10094;</li>
+        <li>
+          <%= Date::ABBR_MONTHNAMES[data.month] %><br>
+          <span style="font-size:18px"><%= data.year %></span>
+        </li>
+        <li class="next">&#10095;</li>
+        
+      </ul>
+    </div>
+    
+    <ul class="weekdays">
+      <% Date::ABBR_DAYNAMES.rotate(start_day).each do |day_name| %> <!-- Rotate to start from the correct day -->
+        <li><%= day_name %></li>
+      <% end %>
+    </ul>
+    
+    <div class="days-grid">
+      <% (1..data.next_month.prev_day.day).each do |day| %>
+        <% current_date = Date.new(Date.today.year, Date.today.month, day) %>
+        <% if current_date.wday == start_day %>
+          <div class="week">
+            <% (start_day..6).each do |empty_day| %>
+              <div class="empty-day"></div>
+            <% end %>
+            <div class="day">
+              <%= link_to day, "#", class: "day-link" %>
+            </div>
+          </div>
+          <% start_day = 0 %> <!-- Reset start_day after the first week -->
+        <% else %>
+          <div class="day">
+            <%= link_to day, "#", class: "day-link" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <% if @tarefas1.any? %>
+    <div class="tarefas-quadro">
+      <h1>Tarefas Completas</h1>
+      <div class="tarefas">
+        <% @tarefas1.each do |tarefa| %>
+          <%= render tarefa %>
+          <p>
+            <%= link_to "Show this tarefa", tarefa %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="tarefas-quadro">
+    <h1>Tarefas Incompletas</h1>
+    <div class="tarefas">
+      <% @tarefas.each do |tarefa| %>
+        <%= render tarefa %>
+        <p>
+          <%= link_to "Show this tarefa", tarefa %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "New tarefa", new_tarefa_path %>
+</body>
+</html>
