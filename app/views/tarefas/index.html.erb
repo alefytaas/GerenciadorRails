@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendário</title>
     
 </head>
 <body>
+
   <% data = Date.new(Date.today.year, Date.today.month, 1) %>
   <% start_day = data.wday == 0 ? 6 : data.wday - 1 %> <!-- Adjust start day index -->
   <div class="calendar">
@@ -57,7 +58,7 @@
         <% @tarefas1.each do |tarefa| %>
           <%= render tarefa %>
           <p>
-            <%= link_to "Show this tarefa", tarefa %>
+            <%= link_to "Detalhes da tarefa", tarefa , class: "btn btn-primary" %>
           </p>
         <% end %>
       </div>
@@ -70,12 +71,12 @@
       <% @tarefas.each do |tarefa| %>
         <%= render tarefa %>
         <p>
-          <%= link_to "Show this tarefa", tarefa %>
+          <%= link_to "Detalhes da tarefa", tarefa, class: "btn btn-primary" %>
         </p>
       <% end %>
     </div>
   </div>
 
-  <%= link_to "New tarefa", new_tarefa_path %>
+  <%= link_to "Nova Tarefa", new_tarefa_path, class: "btn btn-primary" %>
 </body>
 </html>
