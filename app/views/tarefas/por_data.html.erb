@@ -1,0 +1,13 @@
+<%data = params[:prazo] %>
+<h1>Tarefas para <%= Date.parse(data).strftime("%d/%m/%Y") %></h1>
+
+
+<% if @tarefas.empty? %>
+  <p>Não há tarefas para esta data</p>
+<% else %>
+  <%= render "quadro_tarefas", tarefas: @tarefas %>
+<% end %>
+
+
+
+<%= link_to "Retornar ao Inicio", tarefas_path , class: "btn btn-primary"%>

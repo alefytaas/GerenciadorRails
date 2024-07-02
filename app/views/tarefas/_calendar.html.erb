@@ -1,0 +1,33 @@
+  
+  <% start_day = data.wday == 0 ? 6 : data.wday - 1 %> <!-- Adjust start day index -->
+    
+     <ul class="weekdays">
+      <% I18n.t('date.abbr_day_names').drop(1).each do |day_name| %>
+        <li><%= day_name %></li>
+      <% end %>
+      <li><%= "Dom" %></li>
+    </ul>
+    
+    <div class="days-grid">
+      <% (1..data.next_month.prev_day.day).each do |day| %>
+        <% current_date = Date.new(Date.today.year, Date.today.month, day) %>
+        <% if current_date.wday == start_day %>
+          <div class="week">
+            <% (start_day..6).each do |empty_day| %>
+              <div class="empty-day"></div>
+            <% end %>
+            <div class="day">
+              <%# <%= link_to 'Ver Tarefas por Data', por_data_tarefas_path(data: '2024-07-04') %>
+              <%= link_to day.to_s, por_data_tarefas_path(prazo: Date.new(Date.today.year, Date.today.month, day).to_s), class: "day-link" %>
+            </div>
+          </div>
+          <% start_day = 0 %> <!-- Reset start_day after the first week -->
+        <% else %>
+          <div class="day">
+             <%= link_to day.to_s, por_data_tarefas_path(prazo: Date.new(Date.today.year, Date.today.month, day).to_s), class: "day-link" %>
+            <%# <%= link_to day.to_s, data_tarefa_tarefas_path(Date.new(Date.today.year, Date.today.month, day).to_s), class: "day-link" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
