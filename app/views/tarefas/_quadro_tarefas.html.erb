@@ -1,0 +1,34 @@
+
+    <div class="tarefas-quadro">
+      <h1>Tarefas Completas</h1>
+      <div class="tarefas">
+        <% tarefas.each do |tarefa| %>
+        <% if tarefa.completo  %>
+        <%= render tarefa %>
+        <p>
+          <%= link_to "Detalhes da tarefa", tarefa, class: "btn btn-primary" %>|
+          <%= link_to "Editar Tarefa", edit_tarefa_path(tarefa), class: "btn btn-primary" %>
+          <%= button_to "Deletar Tarefa", tarefa, method: :delete, class: "btn btn-danger" %>
+        </p>
+      <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class="tarefas-quadro">
+    <h1>Tarefas Pendentes</h1>
+    <div class="tarefas">
+      <% tarefas.each do |tarefa| %>
+        <% if !tarefa.completo %>
+        <%= render tarefa %>
+        <p>
+          <%= link_to "Detalhes da tarefa", tarefa, class: "btn btn-primary" %>|
+          <%= link_to "Editar Tarefa", edit_tarefa_path(tarefa), class: "btn btn-primary" %>
+          <%= button_to "Deletar Tarefa", tarefa, method: :delete , class: "btn btn-danger"%>
+        </p>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  
+  

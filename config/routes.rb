@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :tarefas
+  resources :tarefas do
+    collection do
+      get 'por_data/:prazo', to: 'tarefas#por_data', as: 'por_data'
+    end 
+  end
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

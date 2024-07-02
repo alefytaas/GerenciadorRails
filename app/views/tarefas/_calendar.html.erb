@@ -17,13 +17,15 @@
               <div class="empty-day"></div>
             <% end %>
             <div class="day">
-              <%= link_to day.to_s, Date.new(Date.today.year, Date.today.month, day).to_s, class: "day-link" %>
+              <%# <%= link_to 'Ver Tarefas por Data', por_data_tarefas_path(data: '2024-07-04') %>
+              <%= link_to day.to_s, por_data_tarefas_path(prazo: Date.new(Date.today.year, Date.today.month, day).to_s), class: "day-link" %>
             </div>
           </div>
           <% start_day = 0 %> <!-- Reset start_day after the first week -->
         <% else %>
           <div class="day">
-            <%= link_to day.to_s, Date.new(Date.today.year, Date.today.month, day).to_s, class: "day-link" %>
+             <%= link_to day.to_s, por_data_tarefas_path(prazo: Date.new(Date.today.year, Date.today.month, day).to_s), class: "day-link" %>
+            <%# <%= link_to day.to_s, data_tarefa_tarefas_path(Date.new(Date.today.year, Date.today.month, day).to_s), class: "day-link" %>
           </div>
         <% end %>
       <% end %>

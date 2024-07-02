@@ -23,34 +23,7 @@
     </div>
 <%= render "calendar", data: @data %>
   
-  <% if @tarefas1.any? %>
-    <div class="tarefas-quadro">
-      <h1>Tarefas Completas</h1>
-      <div class="tarefas">
-        <% @tarefas1.each do |tarefa| %>
-          <%= render tarefa %>
-          <p>
-            <%= link_to "Detalhes da tarefa", tarefa , class: "btn btn-primary" %>|
-            <%= link_to "Editar Tarefa", edit_tarefa_path(tarefa), class: "btn btn-primary" %>
-          </p>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-  
-  <div class="tarefas-quadro">
-    <h1>Tarefas Pendentes</h1>
-    <div class="tarefas">
-      <% @tarefas.each do |tarefa| %>
-        <%= render tarefa %>
-        <p>
-          <%= link_to "Detalhes da tarefa", tarefa, class: "btn btn-primary" %>|
-          <%= link_to "Editar Tarefa", edit_tarefa_path(tarefa), class: "btn btn-primary" %>
-        </p>
-      <% end %>
-    </div>
-  </div>
-
+  <%= render "quadro_tarefas", tarefas: @tarefas %>
   <%= link_to "Nova Tarefa", new_tarefa_path, class: "btn btn-primary" %>
 </body>
 </html>
