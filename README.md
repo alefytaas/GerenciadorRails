@@ -6,7 +6,13 @@ Este projeto é uma recriação do Gerenciador de Tarefas originalmente desenvol
 
 Veja o vídeo abaixo para uma demonstração do projeto:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vKYup4JVd0c?si=4IBlRUwPP02UR2q-" frameborder="0" allowfullscreen></iframe>
+
+
+
+https://github.com/alefytaas/GerenciadorRails/assets/19307656/942f9eae-4366-4786-b882-58b4370e51e0
+
+
+
 
 
 ## Descrição
