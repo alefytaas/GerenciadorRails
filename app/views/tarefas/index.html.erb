@@ -6,10 +6,9 @@
     <title>Calendário</title>
     
 </head>
+<% data = Date.new(Date.today.year, Date.today.month, 1) %>
+<% @data = data %>
 <body>
-
-  <% data = Date.new(Date.today.year, Date.today.month, 1) %>
-  <% start_day = data.wday == 0 ? 6 : data.wday - 1 %> <!-- Adjust start day index -->
   <div class="calendar">
     <div class="month">
       <ul>
@@ -18,33 +17,11 @@
           <%= Date::ABBR_MONTHNAMES[data.month] %><br>
           <span style="font-size:18px"><%= data.year %></span>
         </li>
-        <li class="next">&#10095;</li>
+        <li class="next"><%data.next_month%>&#10095;</li>
         
       </ul>
     </div>
-    
-    
-    <div class="days-grid">
-      <% (1..data.next_month.prev_day.day).each do |day| %>
-        <% current_date = Date.new(Date.today.year, Date.today.month, day) %>
-        <% if current_date.wday == start_day %>
-          <div class="week">
-            <% (start_day..6).each do |empty_day| %>
-              <div class="empty-day"></div>
-            <% end %>
-            <div class="day">
-              <%= link_to day.to_s + " " + Date::ABBR_DAYNAMES[current_date.wday] , "#gfgf", class: "day-link" %>
-            </div>
-          </div>
-          <% start_day = 0 %> <!-- Reset start_day after the first week -->
-        <% else %>
-          <div class="day">
-            <%= link_to day.to_s + " " + Date::ABBR_DAYNAMES[current_date.wday] , "#gfgf", class: "day-link" %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+<%= render "calendar", data: @data %>
   
   <% if @tarefas1.any? %>
     <div class="tarefas-quadro">
@@ -53,7 +30,8 @@
         <% @tarefas1.each do |tarefa| %>
           <%= render tarefa %>
           <p>
-            <%= link_to "Detalhes da tarefa", tarefa , class: "btn btn-primary" %>
+            <%= link_to "Detalhes da tarefa", tarefa , class: "btn btn-primary" %>|
+            <%= link_to "Editar Tarefa", edit_tarefa_path(tarefa), class: "btn btn-primary" %>
           </p>
         <% end %>
       </div>
@@ -66,7 +44,8 @@
       <% @tarefas.each do |tarefa| %>
         <%= render tarefa %>
         <p>
-          <%= link_to "Detalhes da tarefa", tarefa, class: "btn btn-primary" %>
+          <%= link_to "Detalhes da tarefa", tarefa, class: "btn btn-primary" %>|
+          <%= link_to "Editar Tarefa", edit_tarefa_path(tarefa), class: "btn btn-primary" %>
         </p>
       <% end %>
     </div>
