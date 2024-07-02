@@ -1,6 +1,12 @@
 # Gerenciador de Tarefas em Ruby on Rails
-
 Este projeto é uma recriação do Gerenciador de Tarefas originalmente desenvolvido em Ruby, agora utilizando Ruby on Rails.
+
+
+### Demonstração do Projeto
+
+Veja o vídeo abaixo para uma demonstração do projeto:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vKYup4JVd0c?si=4IBlRUwPP02UR2q-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Descrição
 
