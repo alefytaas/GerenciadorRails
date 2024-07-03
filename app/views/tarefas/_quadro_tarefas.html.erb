@@ -2,7 +2,7 @@
     <div class="tarefas-quadro">
       <h1>Tarefas Completas</h1>
       <div class="tarefas">
-        <% tarefas.each do |tarefa| %>
+        <% @tarefas.each do |tarefa| %>
         <% if tarefa.completo  %>
         <%= render tarefa %>
         <p>

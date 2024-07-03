@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :tarefas do
     collection do
       get 'por_data/:prazo', to: 'tarefas#por_data', as: 'por_data'
