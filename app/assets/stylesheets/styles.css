@@ -130,3 +130,15 @@ body {
 .tarefas p:last-child {
   border-bottom: none;
 }
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
