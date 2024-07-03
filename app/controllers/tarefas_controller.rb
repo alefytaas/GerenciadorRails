@@ -7,8 +7,8 @@ class TarefasController < ApplicationController
   end
 	
   def por_data
-    data = params[:prazo]
-    @tarefas = current_user.tarefas.where(prazo: data)
+    data = Date.parse(params[:prazo])  # Converte o parâmetro prazo para um objeto Date
+    @tarefas = current_user.tarefas.where("prazo >= ? AND created_at < ?", data, data.next_day.to_datetime) #Busca tarefas que são sua criação é menor que o proximo dia e o prazo é maior ou igual ao dia selecionado 
     # Renderiza uma view específica para listar tarefas por data
     render :por_data
   end
