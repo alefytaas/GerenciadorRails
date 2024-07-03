@@ -9,7 +9,11 @@ Veja o vídeo abaixo para uma demonstração do projeto:
 
 
 
-https://github.com/alefytaas/GerenciadorRails/assets/19307656/942f9eae-4366-4786-b882-58b4370e51e0
+
+
+https://github.com/alefytaas/GerenciadorRails/assets/19307656/ecdef8a5-be44-4fd0-85ad-17a0d32dd7ae
+
+
 
 
 
@@ -51,6 +55,7 @@ O Gerenciador de Tarefas é uma aplicação web desenvolvida em Ruby on Rails qu
 - **HTML/CSS:** Para a estrutura e o estilo da interface do usuário.
 - **Bootstrap:** Framework de componentes Front-End
 - **SQLite (ou outro banco de dados):** Armazenamento de dados da aplicação.
+- **Devise:** Autenticação dos usuários.
 
 ## Contribuindo
 
