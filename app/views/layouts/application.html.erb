@@ -10,10 +10,24 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <% if user_signed_in? %>
+    <div class="header">
+            <div class="logoInterna">
+                <%= link_to tarefas_path do %>
+                  <%= image_tag 'Logo.png', alt: 'Descrição da Imagem' %>
+                <% end %>
+            </div>
+            <div class="sair">
+                <%= button_to 'Sair', destroy_user_session_path, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
+            </div>
+        </div>
+    <% end %>
   </head>
 
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>

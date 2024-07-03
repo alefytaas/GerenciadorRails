@@ -1,77 +1,64 @@
 class TarefasController < ApplicationController
   before_action :set_tarefa, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /tarefas or /tarefas.json
   def index
-    @tarefas = Tarefa.all
+    @tarefas = current_user.tarefas
   end
-
+	
   def por_data
     data = params[:prazo]
-    @tarefas = Tarefa.where(prazo: data)
+    @tarefas = current_user.tarefas.where(prazo: data)
     # Renderiza uma view específica para listar tarefas por data
     render :por_data
   end
 
-  # GET /tarefas/1 or /tarefas/1.json
   def show
+    @tarefa = current_user.tarefas.find(params[:id])
   end
 
-  # GET /tarefas/new
   def new
     @tarefa = Tarefa.new
   end
 
-  # GET /tarefas/1/edit
-  def edit
-  end
-
-  # POST /tarefas or /tarefas.json
   def create
-    @tarefa = Tarefa.new(tarefa_params)
-
-    respond_to do |format|
-      if @tarefa.save
-        format.html { redirect_to tarefa_url(@tarefa), notice: "Tarefa criada com sucesso." }
-        format.json { render :show, status: :created, location: @tarefa }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tarefa.errors, status: :unprocessable_entity }
-      end
+    @tarefa = current_user.tarefas.build(tarefa_params)
+    if @tarefa.save
+      redirect_to tarefas_path, notice: 'Tarefa criada com sucesso.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /tarefas/1 or /tarefas/1.json
+  def edit
+    @tarefa = current_user.tarefas.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @tarefa.update(tarefa_params)
-        format.html { redirect_to tarefa_url(@tarefa), notice: "Tarefa atualizada com sucesso." }
-        format.json { render :show, status: :ok, location: @tarefa }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tarefa.errors, status: :unprocessable_entity }
-      end
+    @tarefa = current_user.tarefas.find(params[:id])
+    if @tarefa.update(tarefa_params)
+      redirect_to tarefas_path, notice: 'Tarefa atualizada com sucesso.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /tarefas/1 or /tarefas/1.json
   def destroy
-    @tarefa.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to tarefas_url, notice: "Tarefa deletada com sucesso" }
-      format.json { head :no_content }
-    end
+    @tarefa = current_user.tarefas.find(params[:id])
+    @tarefa.destroy
+    redirect_to tarefas_path, notice: 'Tarefa excluída com sucesso.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  def tarefa_params
+    params.require(:tarefa).permit(:titulo, :descricao, :completo, :prazo)
+  end
+
     def set_tarefa
       @tarefa = Tarefa.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def tarefa_params
-      params.require(:tarefa).permit(:titulo, :descricao, :completo, :prazo)
-    end
-end
+  
+  end

@@ -130,3 +130,33 @@ body {
 .tarefas p:last-child {
   border-bottom: none;
 }
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+}
+.logoInterna {
+  margin-right: auto; /* Empurra a logo para a esquerda */
+  margin-left: 20px; /* Margem à esquerda para separar da borda */
+}
+.logoInterna img {
+  width: 75px;
+  height: 50px;
+}
+.sair {
+  margin-left: auto; /* Empurra o botão "Sair" para a direita */
+  margin-right: 20px; /* Margem à direita para separar da borda */
+}
