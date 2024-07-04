@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfico de Tarefas</title>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<body>
+ <h1>Tarefas Criadas por Dia</h1>
+ <p><%= @tarefas_por_dia %></p>
+
+  <%= line_chart @dados_grafico %>
+
+  
+</body>
+</html>
