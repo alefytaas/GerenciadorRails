@@ -17,6 +17,7 @@
                   <%= image_tag 'Logo.png', alt: 'Descrição da Imagem' %>
                 <% end %>
             </div>
+            <div ><%= link_to 'Metricas', metricas_path , class: "btn btn-info"%></div>
             <div class="sair">
                 <%= button_to 'Sair', destroy_user_session_path, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger" %>
             </div>
